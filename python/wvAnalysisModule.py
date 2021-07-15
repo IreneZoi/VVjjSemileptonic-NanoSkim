@@ -52,10 +52,10 @@ class wvAnalysisProducer(Module):
                 eventElectrons += 1
         for jet in jets :
             if jet.pt > 20:
-               eventJets += 1
+                eventJets += 1
         for fatjet in fatJets :
             if fatjet.pt > 20:
-               eventFatJets += 1
+                eventFatJets += 1
         
         if not ( ((eventElectrons >= 1 or eventMuons >=1)) and ( (eventJets >= 2 and eventFatJets >= 1) or (eventJets >= 4 and eventFatJets == 0) )  ):
             keepIt = False

@@ -2,7 +2,10 @@
 year=${1:-2016}
 fileout=sample_list_v7_${year}_eos_custom.dat
 
-echo "# SM EWK" > ${fileout}
+echo "# SM EWK dipoleRecoil" > ${fileout}
+eos root://cmseos.fnal.gov find -d --maxdepth 3 /eos/uscms/store/group/lnujj/VVjj_aQGC/custom_nanoAOD | cut -d '=' -f 2 | cut -d '/' -f 1,9-11 | \
+    grep -E "dipoleRecoil_EWK_LO_SM.*${year}.*v7.*2107" >> ${fileout}
+echo "# SM EWK" >> ${fileout}
 eos root://cmseos.fnal.gov find -d --maxdepth 3 /eos/uscms/store/group/lnujj/VVjj_aQGC/custom_nanoAOD | cut -d '=' -f 2 | cut -d '/' -f 1,9-11 | \
     grep -E "EWK_LO_SM.*${year}.*v7.*2010" >> ${fileout}
 echo "# SM QCD" >> ${fileout}
