@@ -9,9 +9,9 @@
 # https://indico.cern.ch/event/860457/ 
 
 _jet_puid_sf = {
-    '2016': {'source': 'PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_vvVBS/data/PUID_80XTraining_EffSFandUncties.root'},
-    '2017': {'source': 'PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_vvVBS/data/PUID_80XTraining_EffSFandUncties.root'},
-    '2018': {'source': 'PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_vvVBS/data/PUID_80XTraining_EffSFandUncties.root'}
+    '2016': {'source': 'VVjjSemileptonic/NanoSkim/data/PUID_80XTraining_EffSFandUncties.root'},
+    '2017': {'source': 'VVjjSemileptonic/NanoSkim/data/PUID_80XTraining_EffSFandUncties.root'},
+    '2018': {'source': 'VVjjSemileptonic/NanoSkim/data/PUID_80XTraining_EffSFandUncties.root'}
 }
 
 for jet, jetTag in [('real','eff'), ('pu','mistag')]:

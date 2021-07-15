@@ -13,7 +13,7 @@ class JetSFMaker(Module):
     #weight. Same for up/down variations (weights).
     #----------------------------------------------------------------------------
 
-    def __init__(self, cmssw, puid_sf_config='PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_vvVBS/data/JetPUID_cfg.py'):
+    def __init__(self, cmssw, puid_sf_config='VVjjSemileptonic/NanoSkim/python/JetPUID_cfg.py'):
         cmssw_base = os.getenv('CMSSW_BASE')
         with open(cmssw_base + '/src/' + puid_sf_config) as src:
             exec(src)
