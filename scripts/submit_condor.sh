@@ -16,13 +16,18 @@ make_tar.sh
 eos root://cmseos.fnal.gov mkdir -p ${output_eos_dir}
 xrdcp -f ${cmssw}.tgz ${cmssw_eos_path}
 
+n_datasets=$(grep -v "#.*" ${input_dataset_list} | wc -l)
+count_datasets=0
+
 while read -r line
 do
   [[ "${line}" == "#"* ]] && continue
 
+  ((count_datasets=count_datasets+1))
+
   dataset=$(echo ${line} | cut -d '/' -f2)
   [[ "${line}" =~ .*/Run201[6-8].* ]] && dataset=${dataset}_$(echo ${line} | cut -d '/' -f3 | cut -d '-' -f1)
-  mkdir -p condor_logs/${dataset}
+  mkdir -p condor_logs/${year}/${dataset}
 
   if $custom_eos
   then
@@ -33,13 +38,20 @@ do
     xrd_redirector="root://cms-xrd-global.cern.ch/"
   fi
 
+  n_files=${#list_of_files[@]}
+  count_files=0
+
   for input_file in "${list_of_files[@]}"
   do
+    ((count_files=count_files+1))
+
     # check if already proccessed
     output_file_location=${output_eos_dir}/${dataset}/$(basename ${input_file})
     output_exists=$(eos root://cmseos.fnal.gov ls ${output_file_location} &> /dev/null && echo true || echo false)
 
     $output_exists && continue
+
+    echo "${count_files} of ${n_files} files, ${count_datasets} of ${n_datasets} datasets"
 
     condor_submit \
       universe=vanilla \
@@ -48,7 +60,7 @@ do
       transfer_output=True \
       stream_error=True \
       stream_output=True \
-      log_filename="condor_logs/${dataset}/$(basename ${input_file})" \
+      log_filename="condor_logs/${year}/${dataset}/$(basename ${input_file})" \
       log="/dev/null" \
       output="\$(log_filename).out" \
       error="\$(log_filename).err" \
