@@ -11,4 +11,5 @@ tar --exclude-vcs -zcf ${cmssw}.tgz -C $CMSSW_BASE/.. \
     ${cmssw}/config \
     ${cmssw}/.SCRAM \
     ${cmssw}/src \
-    --exclude=${cmssw}.tgz
+    --exclude=${cmssw}.tgz \
+    --exclude="*condor_logs*"
