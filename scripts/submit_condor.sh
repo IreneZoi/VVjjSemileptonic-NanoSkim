@@ -21,6 +21,7 @@ do
   [[ "${line}" == "#"* ]] && continue
 
   dataset=$(echo ${line} | cut -d '/' -f2)
+  [[ "${line}" =~ .*/Run201[6-8].* ]] && dataset=${dataset}_$(echo ${line} | cut -d '/' -f3 | cut -d '-' -f1)
   mkdir -p condor_logs/${dataset}
 
   if $custom_eos
