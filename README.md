@@ -1,46 +1,41 @@
-# nanoAOD_vvVBS
-nanoAOD skiming code for vv semi-leptonic VBS studies
+# VVjjSemileptonic-NanoSkim
+nanoAOD skiming code for VVjj Semileptonic VBS studies
 
 ## Code setup
 
-1. Step: 1: Get CMSSW release
+```bash
+cmsrel CMSSW_10_2_22
+cd CMSSW_10_2_22/src
+cmsenv
+git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
+cd PhysicsTools/NanoAODTools
+git checkout 079c9e18c14c9d71ffe6d0cc4b42f15d97c29efc
+cd -
+git clone git@github.com:singh-ramanpreet/VVjjSemileptonic-NanoSkim.git VVjjSemileptonic/NanoSkim
+scram b
+```
 
-   ```bash
-   cmsrel CMSSW_10_2_22
-   cd CMSSW_10_2_22/src
-   cmsenv
-   ```
+
+## Interactive running
+
+```
+post_proc.py -i <input root file> -y <year, 2016, 2017 or 2018> -t <mc or data> -n <number of events, 0 for all> -p <prefetch input file yes or no> -o <Optional, output filename>
+```
    
-2. Step: 2: Get nanoAODTools
+### Condor job submission
 
-   ```bash
-   git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
-   cd PhysicsTools/NanoAODTools
-   git checkout 079c9e18c14c9d71ffe6d0cc4b42f15d97c29efc
-   cd -
-   ```
-   
-3. Step: 3: Get analysis repository
+```bash
+# setup proxy
+voms-proxy-init -voms cms --valid 192:00
+```
 
-   ```bash
-   git clone git@github.com:singh-ramanpreet/VVjjSemileptonic-NanoSkim.git VVjjSemileptonic/NanoSkim
-   scram b
-   ```
+#### Submission script arguments,
+```bash
+cd VVjjSemileptonic/NanoSkim/submit
+submit_condor.sh <input dataset list file> <year> <true/false whether input file is custom nanoaod> <output directory>
+```
 
-4. Step: 4: interactive running
-
-   ```bash
-   python VVjjSemileptonic/NanoSkim/scripts/post_proc.py
-   ```
-   
-5. batch job submission.
-    ```bash
-    cd $CMSSW_BASE/src/PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_vvVBS
-    # Edit condor_setup.py, then
-    python condor_setup.py
-    # Set proxy before submitting the condor jobs.
-    voms-proxy-init -voms cms --valid 200:00
-    condor_submit <Files-created-from-above-command>.jdl
-    ```
-
-
+##### Example,
+```bash
+submit_condor.sh ../inputs/sample_list_v7_2016_campaign.dat 2016 false /eos/uscms/store/...
+```
