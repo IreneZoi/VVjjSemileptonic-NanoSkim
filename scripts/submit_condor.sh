@@ -51,6 +51,7 @@ do
 
     $output_exists && continue
 
+    echo ${dataset}
     echo "${count_files} of ${n_files} files, ${count_datasets} of ${n_datasets} datasets"
 
     condor_submit \
