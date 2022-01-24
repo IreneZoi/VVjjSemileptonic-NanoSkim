@@ -20,9 +20,15 @@ scram b
 ## Interactive running
 
 ```
-post_proc.py -i <input root file> -y <year, 2016, 2017 or 2018> -t <mc or data> -n <number of events, 0 for all> -p <prefetch input file yes or no> -o <Optional, output filename>
+scripts/post_proc.py -i <input root file> -y <year, 2016, 2017 or 2018> -t <mc or data> -n <number of events, 0 for all> -p <prefetch input file yes or no> -o <Optional, output filename>
 ```
-   
+
+example:
+```
+scripts/post_proc.py -i /store/data/Run2016B/DoubleEG/NANOAOD/02Apr2020_ver1-v1/240000/77792BF4-6456-6A42-8C0A-874D2C24F145.root  -y 2016 -t data -n 1 -p yes -o test
+```
+
+
 ### Condor job submission
 
 ```bash
