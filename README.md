@@ -8,11 +8,11 @@ source /cvmfs/cms.cern.ch/cmsset_default.sh
 cmsrel CMSSW_10_2_22
 cd CMSSW_10_2_22/src
 cmsenv
-git clone https://github.com/singh-ramanpreet/VVjjSemileptonic-NanoSkim.git PhysicsTools/NanoAODTools
+git clone https://github.com/cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
 cd PhysicsTools/NanoAODTools
 git checkout 079c9e18c14c9d71ffe6d0cc4b42f15d97c29efc
 cd -
-git clone git@github.com:singh-ramanpreet/VVjjSemileptonic-NanoSkim.git VVjjSemileptonic/NanoSkim
+git clone https://github.com/singh-ramanpreet/VVjjSemileptonic-NanoSkim.git VVjjSemileptonic/NanoSkim
 scram b
 ```
 
