@@ -20,6 +20,7 @@ scram b
 ## Interactive running
 
 ```
+voms-proxy-init -voms cms --valid 192:00
 scripts/post_proc.py -i <input root file> -y <year, 2016, 2017 or 2018> -t <mc or data> -n <number of events, 0 for all> -p <prefetch input file yes or no> -o <Optional, output filename>
 ```
 
