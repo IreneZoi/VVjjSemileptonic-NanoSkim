@@ -23,10 +23,15 @@ scram b
 scripts/post_proc.py -i <input root file> -y <year, 2016, 2017 or 2018> -t <mc or data> -n <number of events, 0 for all> -p <prefetch input file yes or no> -o <Optional, output filename>
 ```
 
-example:
+example with MC:
 ```
-scripts/post_proc.py -i /store/data/Run2016B/DoubleEG/NANOAOD/02Apr2020_ver1-v1/240000/77792BF4-6456-6A42-8C0A-874D2C24F145.root  -y 2016 -t data -n 1 -p yes -o test
+scripts/post_proc.py -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv7/WWW_4F_DiLeptonFilter_TuneCUETP8M1_13TeV-amcatnlo-pythia8/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/110000/14F2B4F9-20E2-E347-93BB-7FF7210A13FA.root  -y 2016 -t mc -n 1000 -p no -o test
 ```
+The input root file was found with:
+```
+dasgoclient -query="file dataset=/WWW_4F_DiLeptonFilter_TuneCUETP8M1_13TeV-amcatnlo-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM"
+```
+from the list in ```inputs/sample_list_v7_2016_campaign.dat```
 
 
 ### Condor job submission
