@@ -49,6 +49,8 @@ submit_condor.sh <input dataset list file> <year> <true/false whether input file
 ```
 
 ##### Example,
+(enter a new line in the list file!)
+
 ```bash
 submit_condor.sh ../inputs/sample_list_v7_2016_campaign.dat 2016 false /eos/uscms/store/...
 ```
