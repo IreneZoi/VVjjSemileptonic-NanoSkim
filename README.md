@@ -34,6 +34,7 @@ dasgoclient -query="file dataset=/WWW_4F_DiLeptonFilter_TuneCUETP8M1_13TeV-amcat
 ```
 from the list in ```inputs/sample_list_v7_2016_campaign.dat```
 
+NB: the ```-o``` option is currently hardcoded to taking the same as the input.
 
 ### Condor job submission
 
